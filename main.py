@@ -6,33 +6,33 @@ import sys
 
 
 # загрузка изображения
-# image = cv2.imread('romashka.jpg', cv2.IMREAD_GRAYSCALE)
-# (h, w) = image.shape[:2]
+image = cv2.imread('romashka.jpg', cv2.IMREAD_GRAYSCALE)
+(h, w) = image.shape[:2]
 #
 # # изменение параметров длины и ширины изображения
-# res_image = cv2.resize(image, (int(w/1.6), int(h/1.6)))
-# res_image_1 = cv2.resize(image, (int(w/1.6), int(h/1.6)))
+res_image = cv2.resize(image, (int(w/1.6), int(h/1.6)))
+res_image_1 = cv2.resize(image, (int(w/1.6), int(h/1.6)))
 # res_image_7 = cv2.resize(image, (int(w/1.6), int(h/1.6)))
 #
 #
 # # фильтр LoG 3x3
 #
-# transform_matrix_3 = ((0, -1, 0), (-1, 4, -1), (0, -1, 0))
+transform_matrix_3 = ((0, -1, 0), (-1, 4, -1), (0, -1, 0))
 #
-# for i in range(1, res_image.shape[0] - 2):
-#     for j in range(1, res_image.shape[1] - 2):
-#         g_x = 0
-#         for di in range(-1, 2):
-#             for dj in range(-1, 2):
-#
-#                 g_x += res_image_1[i + dj][j + di] * transform_matrix_3[1 + di][1 + dj]
-#
-#         res_image[i][j] = math.sqrt(g_x**2 + g_x**2)
-#
-#
-# cv2.imshow('rom', res_image)
-# cv2.waitKey(0)
-# cv2.imwrite('romashka-3x3.jpg', res_image)
+for i in range(1, res_image.shape[0] - 2):
+    for j in range(1, res_image.shape[1] - 2):
+        g_x = 0
+        for di in range(-1, 2):
+            for dj in range(-1, 2):
+
+                g_x += res_image_1[i + dj][j + di] * transform_matrix_3[1 + di][1 + dj]
+
+        res_image[i][j] = math.sqrt(g_x**2 + g_x**2)
+
+
+cv2.imshow('rom', res_image)
+cv2.waitKey(0)
+cv2.imwrite('romashka-3x3.jpg', res_image)
 #
 #
 # # матрица 7х7
